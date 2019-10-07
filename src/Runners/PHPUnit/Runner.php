@@ -32,6 +32,7 @@ class Runner extends BaseRunner
         while (\count($this->running) || \count($this->pending)) {
             foreach ($this->running as $key => $test) {
                 try {
+                    echo $test->getIncrementalOutput();
                     if (!$this->testIsStillRunning($test)) {
                         unset($this->running[$key]);
                         $this->releaseToken($key);
